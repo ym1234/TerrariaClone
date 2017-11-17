@@ -867,6 +867,8 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
             addMouseListener(this);
             addMouseMotionListener(this);
             addMouseWheelListener(this);
+            requestFocusInWindow();
+
 
             screen = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
 
@@ -3288,7 +3290,7 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
                         Math.sqrt(Math.pow(player.x+player.image.getWidth()-ux2*BLOCKSIZE+BLOCKSIZE/2+WIDTH*BLOCKSIZE, 2) + Math.pow(player.y+player.image.getHeight()-uy2*BLOCKSIZE+BLOCKSIZE/2, 2)) <= 160 || DEBUG_REACH) {
                         ucx = ux - CHUNKBLOCKS * ((int)(ux/CHUNKBLOCKS));
                         ucy = uy - CHUNKBLOCKS * ((int)(uy/CHUNKBLOCKS));
-                        if (Arrays.asList(toolList).contains(inventory.tool())) {
+                        if (layer < blocks.length && uy < blocks[layer].length && ux < blocks[layer][uy].length && Arrays.asList(toolList).contains(inventory.tool())) {
                             if (blocks[layer][uy][ux] != 0 && Arrays.asList(BLOCKTOOLS.get(blocks[layer][uy][ux])).contains(inventory.tool())) {
                                 blockdns[uy][ux] = (byte)random.nextInt(5);
                                 drawn[uy][ux] = false;

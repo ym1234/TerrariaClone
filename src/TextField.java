@@ -43,7 +43,7 @@ public class TextField {
     public void renderImage() {
         image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 
-        Graphics2D g2 = (Graphics2D) image.createGraphics();
+        Graphics2D g2 = image.createGraphics();
 
         g2.setColor(Color.WHITE);
         g2.setFont(font);

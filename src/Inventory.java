@@ -980,7 +980,7 @@ public class Inventory implements Serializable {
     }
 
     public void update(int i) {
-        py = (int)(i/10);
+        py = i / 10;
         px = i-(py*10);
         for (x=px*46+6; x<px*46+46; x++) {
             for (y=py*46+6; y<py*46+46; y++) {
@@ -1242,7 +1242,7 @@ public class Inventory implements Serializable {
 
     public void updateIC(ItemCollection ic, int i) {
         if (ic.type.equals("cic")) {
-            py = (int)(i/2);
+            py = i / 2;
             px = i-(py*2);
             for (x=px*40; x<px*40+40; x++) {
                 for (y=py*40; y<py*40+40; y++) {
@@ -1336,7 +1336,7 @@ public class Inventory implements Serializable {
             }
         }
         if (ic.type.equals("armor")) {
-            py = (int)(i/CX);
+            py = i / CX;
             px = i-(py*CX);
             for (x=px*46; x<px*46+40; x++) {
                 for (y=py*46; y<py*46+40; y++) {
@@ -1364,7 +1364,7 @@ public class Inventory implements Serializable {
             }
         }
         if (ic.type.equals("workbench")) {
-            py = (int)(i/3);
+            py = i / 3;
             px = i-(py*3);
             for (x=px*40; x<px*40+40; x++) {
                 for (y=py*40; y<py*40+40; y++) {
@@ -1462,7 +1462,7 @@ public class Inventory implements Serializable {
             ic.type.equals("silver_chest") || ic.type.equals("gold_chest") ||
             ic.type.equals("zinc_chest") || ic.type.equals("rhymestone_chest") ||
             ic.type.equals("obdurite_chest")) {
-            py = (int)(i/CX);
+            py = i / CX;
             px = i-(py*CX);
             for (x=px*46; x<px*46+40; x++) {
                 for (y=py*46; y<py*46+40; y++) {
@@ -1564,7 +1564,7 @@ public class Inventory implements Serializable {
             }
             if (valid) {
                 for (i=0; i<9; i++) {
-                    removeLocationIC(ic, i, new Short((short)1));
+                    removeLocationIC(ic, i, (short) 1);
                     updateIC(ic, i);
                 }
             }
@@ -1594,7 +1594,7 @@ public class Inventory implements Serializable {
                 for (k=0; k<9; k++) {
                     n = r3.indexOf(ic.ids[k]);
                     r3.remove(n);
-                    removeLocationIC(ic, k, new Short((short)1));
+                    removeLocationIC(ic, k, (short) 1);
                     updateIC(ic, k);
                 }
                 break;
@@ -1613,7 +1613,7 @@ public class Inventory implements Serializable {
             }
             if (valid) {
                 for (i=0; i<4; i++) {
-                    removeLocationIC(ic, i, new Short((short)1));
+                    removeLocationIC(ic, i, (short) 1);
                     updateIC(ic, i);
                 }
             }
@@ -1643,7 +1643,7 @@ public class Inventory implements Serializable {
                 for (k=0; k<4; k++) {
                     n = r3.indexOf(ic.ids[k]);
                     r3.remove(n);
-                    removeLocationIC(ic, k, new Short((short)1));
+                    removeLocationIC(ic, k, (short) 1);
                     updateIC(ic, k);
                 }
                 break;

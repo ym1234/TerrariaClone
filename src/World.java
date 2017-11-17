@@ -1312,7 +1312,7 @@ public class World {
         Byte[][] rv = new Byte[height][width];
         for (y=0; y<height; y++) {
             for (x=0; x<width; x++) {
-                rv[y][x] = (Byte)blockbgs[y][x];
+                rv[y][x] = blockbgs[y][x];
             }
         }
         return rv;

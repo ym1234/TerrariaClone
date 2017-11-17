@@ -1,14 +1,3 @@
-/**
-
-TerrariaClone (working title) [Pre-alpha 1.3]
-
-developed by Radon Rosborough
-
-Project mission: To program a 2D sandbox game similar to, but with many more
-                 features than, Terraria.
-
-**/
-
 import java.applet.Applet;
 import java.awt.*;
 import java.awt.event.*;
@@ -442,7 +431,7 @@ import javax.swing.event.*;
 
 */
 
-public class TerrariaClone extends JApplet implements ChangeListener, KeyListener, MouseListener, MouseMotionListener, MouseWheelListener {
+public class TerrariaClone extends JPanel implements ChangeListener, KeyListener, MouseListener, MouseMotionListener, MouseWheelListener {
 
     static GraphicsConfiguration config = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration();
     BufferedImage screen;
@@ -850,7 +839,7 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setVisible(true);
 
-        JApplet ap = new TerrariaClone();
+        TerrariaClone ap = new TerrariaClone();
         ap.setFocusable(true);
         f.add("Center", ap);
         f.pack();
@@ -867,6 +856,7 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
             addMouseListener(this);
             addMouseMotionListener(this);
             addMouseWheelListener(this);
+            requestFocusInWindow();
 
             screen = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
 
@@ -899,7 +889,7 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
             itemImgs = new HashMap<Short,BufferedImage>();
 
             for (i=1; i<items.length; i++) {
-                itemImgs.put(new Short((short)i), loadImage("items/" + items[i] + ".png"));
+                itemImgs.put((short) i, loadImage("items/" + items[i] + ".png"));
                 if (itemImgs.get((short)i) == null) {
                     System.out.println("[ERROR] Could not load item graphic '" + items[i] + "'.");
                 }
@@ -1108,7 +1098,7 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
 
             for (i=0; i<blocktools.length; i++) {
                 for (j=0; j<blocktools[i].length; j++) {
-                    blocktools[i][j] = new Short((short)blocktools[i][j]);
+                    blocktools[i][j] = new Short(blocktools[i][j]);
                 }
             }
 
@@ -1119,93 +1109,93 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
             TOOLSPEED = new HashMap<Short,Double>();
 
             for (i=1; i<items.length; i++) {
-                TOOLSPEED.put(new Short((short)i), 0.175);
+                TOOLSPEED.put((short) i, 0.175);
             }
 
-            TOOLSPEED.put(new Short((short)154), 0.100);// wood:   P100 S100
-            TOOLSPEED.put(new Short((short)155), 0.100);
-            TOOLSPEED.put(new Short((short)156), 0.100);
-            TOOLSPEED.put(new Short((short)157), 0.110);// stone:  P110 S105
-            TOOLSPEED.put(new Short((short)158), 0.110);
-            TOOLSPEED.put(new Short((short)159), 0.105);
-            TOOLSPEED.put(new Short((short)7), 0.120);  // copper: P120 S110
-            TOOLSPEED.put(new Short((short)11), 0.120);
-            TOOLSPEED.put(new Short((short)16), 0.110);
-            TOOLSPEED.put(new Short((short)8), 0.130);  // iron:   P130 S115
-            TOOLSPEED.put(new Short((short)12), 0.130);
-            TOOLSPEED.put(new Short((short)17), 0.115);
-            TOOLSPEED.put(new Short((short)9), 0.140);  // silver: P140 S120
-            TOOLSPEED.put(new Short((short)13), 0.140);
-            TOOLSPEED.put(new Short((short)18), 0.120);
-            TOOLSPEED.put(new Short((short)10), 0.150); // gold:   P150 S125
-            TOOLSPEED.put(new Short((short)14), 0.150);
-            TOOLSPEED.put(new Short((short)19), 0.125);
-            TOOLSPEED.put(new Short((short)51), 0.160); // zinc:   P160 S130
-            TOOLSPEED.put(new Short((short)52), 0.160);
-            TOOLSPEED.put(new Short((short)53), 0.130);
-            TOOLSPEED.put(new Short((short)54), 0.170); // rhyme:  P170 S135
-            TOOLSPEED.put(new Short((short)55), 0.170);
-            TOOLSPEED.put(new Short((short)56), 0.135);
-            TOOLSPEED.put(new Short((short)57), 0.180); // obdur:  P180 S140
-            TOOLSPEED.put(new Short((short)58), 0.180);
-            TOOLSPEED.put(new Short((short)59), 0.140);
-            TOOLSPEED.put(new Short((short)145), 0.350);// alumin: P250 S175
-            TOOLSPEED.put(new Short((short)146), 0.350);
-            TOOLSPEED.put(new Short((short)147), 0.245);
-            TOOLSPEED.put(new Short((short)148), 0.130);// lead:   P130 S115
-            TOOLSPEED.put(new Short((short)149), 0.130);
-            TOOLSPEED.put(new Short((short)150), 0.115);
-            TOOLSPEED.put(new Short((short)169), 0.250); // magne:  P350 S245
-            TOOLSPEED.put(new Short((short)170), 0.250);
-            TOOLSPEED.put(new Short((short)171), 0.175);
-            TOOLSPEED.put(new Short((short)172), 0.350); // irrad:  P350 S245
-            TOOLSPEED.put(new Short((short)173), 0.350);
-            TOOLSPEED.put(new Short((short)174), 0.245);
+            TOOLSPEED.put((short) 154, 0.100);// wood:   P100 S100
+            TOOLSPEED.put((short) 155, 0.100);
+            TOOLSPEED.put((short) 156, 0.100);
+            TOOLSPEED.put((short) 157, 0.110);// stone:  P110 S105
+            TOOLSPEED.put((short) 158, 0.110);
+            TOOLSPEED.put((short) 159, 0.105);
+            TOOLSPEED.put((short) 7, 0.120);  // copper: P120 S110
+            TOOLSPEED.put((short) 11, 0.120);
+            TOOLSPEED.put((short) 16, 0.110);
+            TOOLSPEED.put((short) 8, 0.130);  // iron:   P130 S115
+            TOOLSPEED.put((short) 12, 0.130);
+            TOOLSPEED.put((short) 17, 0.115);
+            TOOLSPEED.put((short) 9, 0.140);  // silver: P140 S120
+            TOOLSPEED.put((short) 13, 0.140);
+            TOOLSPEED.put((short) 18, 0.120);
+            TOOLSPEED.put((short) 10, 0.150); // gold:   P150 S125
+            TOOLSPEED.put((short) 14, 0.150);
+            TOOLSPEED.put((short) 19, 0.125);
+            TOOLSPEED.put((short) 51, 0.160); // zinc:   P160 S130
+            TOOLSPEED.put((short) 52, 0.160);
+            TOOLSPEED.put((short) 53, 0.130);
+            TOOLSPEED.put((short) 54, 0.170); // rhyme:  P170 S135
+            TOOLSPEED.put((short) 55, 0.170);
+            TOOLSPEED.put((short) 56, 0.135);
+            TOOLSPEED.put((short) 57, 0.180); // obdur:  P180 S140
+            TOOLSPEED.put((short) 58, 0.180);
+            TOOLSPEED.put((short) 59, 0.140);
+            TOOLSPEED.put((short) 145, 0.350);// alumin: P250 S175
+            TOOLSPEED.put((short) 146, 0.350);
+            TOOLSPEED.put((short) 147, 0.245);
+            TOOLSPEED.put((short) 148, 0.130);// lead:   P130 S115
+            TOOLSPEED.put((short) 149, 0.130);
+            TOOLSPEED.put((short) 150, 0.115);
+            TOOLSPEED.put((short) 169, 0.250); // magne:  P350 S245
+            TOOLSPEED.put((short) 170, 0.250);
+            TOOLSPEED.put((short) 171, 0.175);
+            TOOLSPEED.put((short) 172, 0.350); // irrad:  P350 S245
+            TOOLSPEED.put((short) 173, 0.350);
+            TOOLSPEED.put((short) 174, 0.245);
 
-            TOOLSPEED.put(new Short((short)33), 0.125); // stone lighter
+            TOOLSPEED.put((short) 33, 0.125); // stone lighter
 
             TOOLDAMAGE = new HashMap<Short,Integer>();
 
             for (i=0; i<items.length; i++) {
-                TOOLDAMAGE.put(new Short((short)i), 1);
+                TOOLDAMAGE.put((short) i, 1);
             }
 
-            TOOLDAMAGE.put(new Short((short)7), 2);
-            TOOLDAMAGE.put(new Short((short)8), 3);
-            TOOLDAMAGE.put(new Short((short)9), 3);
-            TOOLDAMAGE.put(new Short((short)10), 4);
-            TOOLDAMAGE.put(new Short((short)11), 3);
-            TOOLDAMAGE.put(new Short((short)12), 4);
-            TOOLDAMAGE.put(new Short((short)13), 5);
-            TOOLDAMAGE.put(new Short((short)14), 6);
-            TOOLDAMAGE.put(new Short((short)16), 5);
-            TOOLDAMAGE.put(new Short((short)17), 8);
-            TOOLDAMAGE.put(new Short((short)18), 13);
-            TOOLDAMAGE.put(new Short((short)19), 18);
-            TOOLDAMAGE.put(new Short((short)51), 6);
-            TOOLDAMAGE.put(new Short((short)52), 9);
-            TOOLDAMAGE.put(new Short((short)53), 24);
-            TOOLDAMAGE.put(new Short((short)54), 8);
-            TOOLDAMAGE.put(new Short((short)55), 11);
-            TOOLDAMAGE.put(new Short((short)56), 30);
-            TOOLDAMAGE.put(new Short((short)57), 10);
-            TOOLDAMAGE.put(new Short((short)58), 15);
-            TOOLDAMAGE.put(new Short((short)59), 38);
-            TOOLDAMAGE.put(new Short((short)145), 7);
-            TOOLDAMAGE.put(new Short((short)146), 10);
-            TOOLDAMAGE.put(new Short((short)147), 27);
-            TOOLDAMAGE.put(new Short((short)148), 4);
-            TOOLDAMAGE.put(new Short((short)149), 5);
-            TOOLDAMAGE.put(new Short((short)150), 9);
-            TOOLDAMAGE.put(new Short((short)154), 1);
-            TOOLDAMAGE.put(new Short((short)155), 1);
-            TOOLDAMAGE.put(new Short((short)156), 3);
-            TOOLDAMAGE.put(new Short((short)157), 1);
-            TOOLDAMAGE.put(new Short((short)158), 2);
-            TOOLDAMAGE.put(new Short((short)159), 4);
-            TOOLDAMAGE.put(new Short((short)57), 20);
-            TOOLDAMAGE.put(new Short((short)58), 30);
-            TOOLDAMAGE.put(new Short((short)59), 75);
+            TOOLDAMAGE.put((short) 7, 2);
+            TOOLDAMAGE.put((short) 8, 3);
+            TOOLDAMAGE.put((short) 9, 3);
+            TOOLDAMAGE.put((short) 10, 4);
+            TOOLDAMAGE.put((short) 11, 3);
+            TOOLDAMAGE.put((short) 12, 4);
+            TOOLDAMAGE.put((short) 13, 5);
+            TOOLDAMAGE.put((short) 14, 6);
+            TOOLDAMAGE.put((short) 16, 5);
+            TOOLDAMAGE.put((short) 17, 8);
+            TOOLDAMAGE.put((short) 18, 13);
+            TOOLDAMAGE.put((short) 19, 18);
+            TOOLDAMAGE.put((short) 51, 6);
+            TOOLDAMAGE.put((short) 52, 9);
+            TOOLDAMAGE.put((short) 53, 24);
+            TOOLDAMAGE.put((short) 54, 8);
+            TOOLDAMAGE.put((short) 55, 11);
+            TOOLDAMAGE.put((short) 56, 30);
+            TOOLDAMAGE.put((short) 57, 10);
+            TOOLDAMAGE.put((short) 58, 15);
+            TOOLDAMAGE.put((short) 59, 38);
+            TOOLDAMAGE.put((short) 145, 7);
+            TOOLDAMAGE.put((short) 146, 10);
+            TOOLDAMAGE.put((short) 147, 27);
+            TOOLDAMAGE.put((short) 148, 4);
+            TOOLDAMAGE.put((short) 149, 5);
+            TOOLDAMAGE.put((short) 150, 9);
+            TOOLDAMAGE.put((short) 154, 1);
+            TOOLDAMAGE.put((short) 155, 1);
+            TOOLDAMAGE.put((short) 156, 3);
+            TOOLDAMAGE.put((short) 157, 1);
+            TOOLDAMAGE.put((short) 158, 2);
+            TOOLDAMAGE.put((short) 159, 4);
+            TOOLDAMAGE.put((short) 57, 20);
+            TOOLDAMAGE.put((short) 58, 30);
+            TOOLDAMAGE.put((short) 59, 75);
 
             short[] drops = {0, 1, 2, 3, 4, 5, 6, 15, 20, 21, 22, 23, 24, 25, 26, 15, 0, 27, 28, 34, 35, 36, 37, 27, 35, 35, 36, 36, 37, 37, 0, 38, 39, 40, 41, 42, 43, 44, 44, 45, 46, 47, 48, 49, 50, 74, 75, 0, 0, 0, 78, 0, 0, 80, 0, 0, 82, 0, 0, 84, 0, 0, 86, 0, 0, 88, 0, 0, 90, 0, 0, 92, 1, 1, 93, 93, 94, 0, 0, 96, 151, 152, 153, 15, 161, 162, 163, 164, 165, 166, 168, 1, 50, 1, 175, 175, 175, 175, 175, 175, 176, 176, 176, 177, 177, 178, 178, 178, 178, 178, 178, 180, 180, 180, 180, 180, 180, 180, 180, 181, 181, 181, 181, 181, 181, 181, 181, 182, 182, 182, 182, 183, 183, 184, 184, 185, 185, 186, 186, 186, 186, 186, 186, 186, 186, 187, 187, 187, 187, 187, 187, 187, 187, 188, 188, 188, 188, 188, 188, 188, 188, 189, 189, 189, 189, 189, 189, 189, 189};
 
@@ -1220,7 +1210,7 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
             ITEMBLOCKS = new HashMap<Short,Integer>();
 
             for (i=1; i<items.length; i++) {
-                ITEMBLOCKS.put(new Short((short)i), itemblocks[i]);
+                ITEMBLOCKS.put((short) i, itemblocks[i]);
             }
 
             OUTLINES = new HashMap<Integer,String>();
@@ -1349,7 +1339,7 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
             short[] stacks = {100, 100, 100, 100, 100, 100, 100, 1, 1, 1, 1, 1, 1, 1, 1, 100, 1, 1, 1, 1, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 1, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 1, 1, 1, 1, 1, 1, 1, 1, 1, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 100, 100, 100, 1, 1, 1, 1, 1, 1, 100, 100, 100, 100, 100, 100, 100, 100, 100, 1, 1, 1, 1, 1, 1, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 1};
 
             for (i=0; i<items.length; i++) {
-                MAXSTACKS.put(new Short((short)i), stacks[i]);
+                MAXSTACKS.put((short) i, stacks[i]);
             }
 
             SKYCOLORS = new HashMap<Integer,Color>();
@@ -1501,166 +1491,166 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
             ARMOR = new HashMap<Short,Integer>();
 
             for (i=0; i<items.length; i++) {
-                ARMOR.put(new Short((short)i), 0);
+                ARMOR.put((short) i, 0);
             }
 
-            ARMOR.put(new Short((short)105), 1);
-            ARMOR.put(new Short((short)106), 2);
-            ARMOR.put(new Short((short)107), 1);
-            ARMOR.put(new Short((short)108), 1);
-            ARMOR.put(new Short((short)109), 1);
-            ARMOR.put(new Short((short)110), 3);
-            ARMOR.put(new Short((short)111), 2);
-            ARMOR.put(new Short((short)112), 1);
-            ARMOR.put(new Short((short)113), 2);
-            ARMOR.put(new Short((short)114), 4);
-            ARMOR.put(new Short((short)115), 3);
-            ARMOR.put(new Short((short)116), 1);
-            ARMOR.put(new Short((short)117), 3);
-            ARMOR.put(new Short((short)118), 6);
-            ARMOR.put(new Short((short)119), 5);
-            ARMOR.put(new Short((short)120), 2);
-            ARMOR.put(new Short((short)121), 4);
-            ARMOR.put(new Short((short)122), 7);
-            ARMOR.put(new Short((short)123), 6);
-            ARMOR.put(new Short((short)124), 3);
-            ARMOR.put(new Short((short)125), 5);
-            ARMOR.put(new Short((short)126), 9);
-            ARMOR.put(new Short((short)127), 7);
-            ARMOR.put(new Short((short)128), 4);
-            ARMOR.put(new Short((short)129), 7);
-            ARMOR.put(new Short((short)130), 12);
-            ARMOR.put(new Short((short)131), 10);
-            ARMOR.put(new Short((short)132), 6);
-            ARMOR.put(new Short((short)133), 4);
-            ARMOR.put(new Short((short)134), 7);
-            ARMOR.put(new Short((short)135), 6);
-            ARMOR.put(new Short((short)136), 3);
-            ARMOR.put(new Short((short)137), 2);
-            ARMOR.put(new Short((short)138), 4);
-            ARMOR.put(new Short((short)139), 3);
-            ARMOR.put(new Short((short)140), 1);
-            ARMOR.put(new Short((short)141), 10);
-            ARMOR.put(new Short((short)142), 18);
-            ARMOR.put(new Short((short)143), 14);
-            ARMOR.put(new Short((short)144), 8);
+            ARMOR.put((short) 105, 1);
+            ARMOR.put((short) 106, 2);
+            ARMOR.put((short) 107, 1);
+            ARMOR.put((short) 108, 1);
+            ARMOR.put((short) 109, 1);
+            ARMOR.put((short) 110, 3);
+            ARMOR.put((short) 111, 2);
+            ARMOR.put((short) 112, 1);
+            ARMOR.put((short) 113, 2);
+            ARMOR.put((short) 114, 4);
+            ARMOR.put((short) 115, 3);
+            ARMOR.put((short) 116, 1);
+            ARMOR.put((short) 117, 3);
+            ARMOR.put((short) 118, 6);
+            ARMOR.put((short) 119, 5);
+            ARMOR.put((short) 120, 2);
+            ARMOR.put((short) 121, 4);
+            ARMOR.put((short) 122, 7);
+            ARMOR.put((short) 123, 6);
+            ARMOR.put((short) 124, 3);
+            ARMOR.put((short) 125, 5);
+            ARMOR.put((short) 126, 9);
+            ARMOR.put((short) 127, 7);
+            ARMOR.put((short) 128, 4);
+            ARMOR.put((short) 129, 7);
+            ARMOR.put((short) 130, 12);
+            ARMOR.put((short) 131, 10);
+            ARMOR.put((short) 132, 6);
+            ARMOR.put((short) 133, 4);
+            ARMOR.put((short) 134, 7);
+            ARMOR.put((short) 135, 6);
+            ARMOR.put((short) 136, 3);
+            ARMOR.put((short) 137, 2);
+            ARMOR.put((short) 138, 4);
+            ARMOR.put((short) 139, 3);
+            ARMOR.put((short) 140, 1);
+            ARMOR.put((short) 141, 10);
+            ARMOR.put((short) 142, 18);
+            ARMOR.put((short) 143, 14);
+            ARMOR.put((short) 144, 8);
 
             TOOLDURS = new HashMap<Short,Short>();
 
-            TOOLDURS.put(new Short((short)7), new Short((short)400));   // copper: P0200 A0200 S0125
-            TOOLDURS.put(new Short((short)8), new Short((short)500));   // iron:   P0250 A0250 S0150
-            TOOLDURS.put(new Short((short)9), new Short((short)600));   // silver: P0300 A0300 S0200
-            TOOLDURS.put(new Short((short)10), new Short((short)800));  // gold:   P0400 A0400 S0300
-            TOOLDURS.put(new Short((short)11), new Short((short)400));
-            TOOLDURS.put(new Short((short)12), new Short((short)500));
-            TOOLDURS.put(new Short((short)13), new Short((short)600));
-            TOOLDURS.put(new Short((short)14), new Short((short)800));
-            TOOLDURS.put(new Short((short)16), new Short((short)250));
-            TOOLDURS.put(new Short((short)17), new Short((short)300));
-            TOOLDURS.put(new Short((short)18), new Short((short)400));
-            TOOLDURS.put(new Short((short)19), new Short((short)600));
-            TOOLDURS.put(new Short((short)33), new Short((short)100));
-            TOOLDURS.put(new Short((short)51), new Short((short)1100));  // zinc:   P0550 A0550 S0475
-            TOOLDURS.put(new Short((short)52), new Short((short)1100));
-            TOOLDURS.put(new Short((short)53), new Short((short)950));
-            TOOLDURS.put(new Short((short)54), new Short((short)1350));  // rhyme:  P0675 A0675 S0625
-            TOOLDURS.put(new Short((short)55), new Short((short)1350));
-            TOOLDURS.put(new Short((short)56), new Short((short)1250));
-            TOOLDURS.put(new Short((short)57), new Short((short)1600));  // obdur:  P0800 A0800 S0800
-            TOOLDURS.put(new Short((short)58), new Short((short)1600));
-            TOOLDURS.put(new Short((short)59), new Short((short)1600));
-            TOOLDURS.put(new Short((short)145), new Short((short)200)); // alumin: P0100 A0100 S0050
-            TOOLDURS.put(new Short((short)146), new Short((short)200));
-            TOOLDURS.put(new Short((short)147), new Short((short)100));
-            TOOLDURS.put(new Short((short)148), new Short((short)2400));// lead:   P1200 A1200 S0800
-            TOOLDURS.put(new Short((short)149), new Short((short)2400));
-            TOOLDURS.put(new Short((short)150), new Short((short)1600));
-            TOOLDURS.put(new Short((short)154), new Short((short)200)); // wood:   P0100 A0100 S0050
-            TOOLDURS.put(new Short((short)155), new Short((short)200));
-            TOOLDURS.put(new Short((short)156), new Short((short)100));
-            TOOLDURS.put(new Short((short)157), new Short((short)300)); // stone:  P0150 A0150 S0075
-            TOOLDURS.put(new Short((short)158), new Short((short)300));
-            TOOLDURS.put(new Short((short)159), new Short((short)150));
-            TOOLDURS.put(new Short((short)169), new Short((short)1200)); // magne:  P0600 A0600 S0600
-            TOOLDURS.put(new Short((short)170), new Short((short)1200));
-            TOOLDURS.put(new Short((short)171), new Short((short)1200));
-            TOOLDURS.put(new Short((short)172), new Short((short)4000));// irrad:  P2000 A2000 S2000
-            TOOLDURS.put(new Short((short)173), new Short((short)4000));
-            TOOLDURS.put(new Short((short)174), new Short((short)4000));
-            TOOLDURS.put(new Short((short)190), new Short((short)400));
+            TOOLDURS.put((short) 7, (short) 400);   // copper: P0200 A0200 S0125
+            TOOLDURS.put((short) 8, (short) 500);   // iron:   P0250 A0250 S0150
+            TOOLDURS.put((short) 9, (short) 600);   // silver: P0300 A0300 S0200
+            TOOLDURS.put((short) 10, (short) 800);  // gold:   P0400 A0400 S0300
+            TOOLDURS.put((short) 11, (short) 400);
+            TOOLDURS.put((short) 12, (short) 500);
+            TOOLDURS.put((short) 13, (short) 600);
+            TOOLDURS.put((short) 14, (short) 800);
+            TOOLDURS.put((short) 16, (short) 250);
+            TOOLDURS.put((short) 17, (short) 300);
+            TOOLDURS.put((short) 18, (short) 400);
+            TOOLDURS.put((short) 19, (short) 600);
+            TOOLDURS.put((short) 33, (short) 100);
+            TOOLDURS.put((short) 51, (short) 1100);  // zinc:   P0550 A0550 S0475
+            TOOLDURS.put((short) 52, (short) 1100);
+            TOOLDURS.put((short) 53, (short) 950);
+            TOOLDURS.put((short) 54, (short) 1350);  // rhyme:  P0675 A0675 S0625
+            TOOLDURS.put((short) 55, (short) 1350);
+            TOOLDURS.put((short) 56, (short) 1250);
+            TOOLDURS.put((short) 57, (short) 1600);  // obdur:  P0800 A0800 S0800
+            TOOLDURS.put((short) 58, (short) 1600);
+            TOOLDURS.put((short) 59, (short) 1600);
+            TOOLDURS.put((short) 145, (short) 200); // alumin: P0100 A0100 S0050
+            TOOLDURS.put((short) 146, (short) 200);
+            TOOLDURS.put((short) 147, (short) 100);
+            TOOLDURS.put((short) 148, (short) 2400);// lead:   P1200 A1200 S0800
+            TOOLDURS.put((short) 149, (short) 2400);
+            TOOLDURS.put((short) 150, (short) 1600);
+            TOOLDURS.put((short) 154, (short) 200); // wood:   P0100 A0100 S0050
+            TOOLDURS.put((short) 155, (short) 200);
+            TOOLDURS.put((short) 156, (short) 100);
+            TOOLDURS.put((short) 157, (short) 300); // stone:  P0150 A0150 S0075
+            TOOLDURS.put((short) 158, (short) 300);
+            TOOLDURS.put((short) 159, (short) 150);
+            TOOLDURS.put((short) 169, (short) 1200); // magne:  P0600 A0600 S0600
+            TOOLDURS.put((short) 170, (short) 1200);
+            TOOLDURS.put((short) 171, (short) 1200);
+            TOOLDURS.put((short) 172, (short) 4000);// irrad:  P2000 A2000 S2000
+            TOOLDURS.put((short) 173, (short) 4000);
+            TOOLDURS.put((short) 174, (short) 4000);
+            TOOLDURS.put((short) 190, (short) 400);
 
-            TOOLDURS.put(new Short((short)105), new Short((short)200)); // copper: 0300
-            TOOLDURS.put(new Short((short)106), new Short((short)200)); // copper: 0300
-            TOOLDURS.put(new Short((short)107), new Short((short)200)); // copper: 0300
-            TOOLDURS.put(new Short((short)108), new Short((short)200)); // copper: 0300
-            TOOLDURS.put(new Short((short)109), new Short((short)200)); // iron:   0400
-            TOOLDURS.put(new Short((short)110), new Short((short)200)); // iron:   0400
-            TOOLDURS.put(new Short((short)111), new Short((short)200)); // iron:   0400
-            TOOLDURS.put(new Short((short)112), new Short((short)200)); // iron:   0400
-            TOOLDURS.put(new Short((short)113), new Short((short)200)); // silver: 0550
-            TOOLDURS.put(new Short((short)114), new Short((short)200)); // silver: 0550
-            TOOLDURS.put(new Short((short)115), new Short((short)200)); // silver: 0550
-            TOOLDURS.put(new Short((short)116), new Short((short)200)); // silver: 0550
-            TOOLDURS.put(new Short((short)117), new Short((short)200)); // gold:   0700
-            TOOLDURS.put(new Short((short)118), new Short((short)200)); // gold:   0700
-            TOOLDURS.put(new Short((short)119), new Short((short)200)); // gold:   0700
-            TOOLDURS.put(new Short((short)120), new Short((short)200)); // gold:   0700
-            TOOLDURS.put(new Short((short)121), new Short((short)200)); // zinc:   0875
-            TOOLDURS.put(new Short((short)122), new Short((short)200)); // zinc:   0875
-            TOOLDURS.put(new Short((short)123), new Short((short)200)); // zinc:   0875
-            TOOLDURS.put(new Short((short)124), new Short((short)200)); // zinc:   0875
-            TOOLDURS.put(new Short((short)125), new Short((short)200)); // rhyme:  1000
-            TOOLDURS.put(new Short((short)126), new Short((short)200)); // rhyme:  1000
-            TOOLDURS.put(new Short((short)127), new Short((short)200)); // rhyme:  1000
-            TOOLDURS.put(new Short((short)128), new Short((short)200)); // rhyme:  1000
-            TOOLDURS.put(new Short((short)129), new Short((short)200)); // obdur:  1400
-            TOOLDURS.put(new Short((short)130), new Short((short)200)); // obdur:  1400
-            TOOLDURS.put(new Short((short)131), new Short((short)200)); // obdur:  1400
-            TOOLDURS.put(new Short((short)132), new Short((short)200)); // obdur:  1400
-            TOOLDURS.put(new Short((short)133), new Short((short)200)); // alumin: 0150
-            TOOLDURS.put(new Short((short)134), new Short((short)200)); // alumin: 0150
-            TOOLDURS.put(new Short((short)135), new Short((short)200)); // alumin: 0150
-            TOOLDURS.put(new Short((short)136), new Short((short)200)); // alumin: 0150
-            TOOLDURS.put(new Short((short)137), new Short((short)200)); // lead:   2000
-            TOOLDURS.put(new Short((short)138), new Short((short)200)); // lead:   2000
-            TOOLDURS.put(new Short((short)139), new Short((short)200)); // lead:   2000
-            TOOLDURS.put(new Short((short)140), new Short((short)200)); // lead:   2000
+            TOOLDURS.put((short) 105, (short) 200); // copper: 0300
+            TOOLDURS.put((short) 106, (short) 200); // copper: 0300
+            TOOLDURS.put((short) 107, (short) 200); // copper: 0300
+            TOOLDURS.put((short) 108, (short) 200); // copper: 0300
+            TOOLDURS.put((short) 109, (short) 200); // iron:   0400
+            TOOLDURS.put((short) 110, (short) 200); // iron:   0400
+            TOOLDURS.put((short) 111, (short) 200); // iron:   0400
+            TOOLDURS.put((short) 112, (short) 200); // iron:   0400
+            TOOLDURS.put((short) 113, (short) 200); // silver: 0550
+            TOOLDURS.put((short) 114, (short) 200); // silver: 0550
+            TOOLDURS.put((short) 115, (short) 200); // silver: 0550
+            TOOLDURS.put((short) 116, (short) 200); // silver: 0550
+            TOOLDURS.put((short) 117, (short) 200); // gold:   0700
+            TOOLDURS.put((short) 118, (short) 200); // gold:   0700
+            TOOLDURS.put((short) 119, (short) 200); // gold:   0700
+            TOOLDURS.put((short) 120, (short) 200); // gold:   0700
+            TOOLDURS.put((short) 121, (short) 200); // zinc:   0875
+            TOOLDURS.put((short) 122, (short) 200); // zinc:   0875
+            TOOLDURS.put((short) 123, (short) 200); // zinc:   0875
+            TOOLDURS.put((short) 124, (short) 200); // zinc:   0875
+            TOOLDURS.put((short) 125, (short) 200); // rhyme:  1000
+            TOOLDURS.put((short) 126, (short) 200); // rhyme:  1000
+            TOOLDURS.put((short) 127, (short) 200); // rhyme:  1000
+            TOOLDURS.put((short) 128, (short) 200); // rhyme:  1000
+            TOOLDURS.put((short) 129, (short) 200); // obdur:  1400
+            TOOLDURS.put((short) 130, (short) 200); // obdur:  1400
+            TOOLDURS.put((short) 131, (short) 200); // obdur:  1400
+            TOOLDURS.put((short) 132, (short) 200); // obdur:  1400
+            TOOLDURS.put((short) 133, (short) 200); // alumin: 0150
+            TOOLDURS.put((short) 134, (short) 200); // alumin: 0150
+            TOOLDURS.put((short) 135, (short) 200); // alumin: 0150
+            TOOLDURS.put((short) 136, (short) 200); // alumin: 0150
+            TOOLDURS.put((short) 137, (short) 200); // lead:   2000
+            TOOLDURS.put((short) 138, (short) 200); // lead:   2000
+            TOOLDURS.put((short) 139, (short) 200); // lead:   2000
+            TOOLDURS.put((short) 140, (short) 200); // lead:   2000
 
             FUELS = new HashMap<Short,Double>();
 
-            FUELS.put(new Short((short)15), 0.01);
-            FUELS.put(new Short((short)28), 0.001);
-            FUELS.put(new Short((short)160), 0.02);
-            FUELS.put(new Short((short)168), 0.01);
-            FUELS.put(new Short((short)179), 0.0035);
-            FUELS.put(new Short((short)20), 0.0025);
-            FUELS.put(new Short((short)21), 0.00125);
-            FUELS.put(new Short((short)35), 0.02);
-            FUELS.put(new Short((short)36), 0.011);
-            FUELS.put(new Short((short)77), 0.02);
-            FUELS.put(new Short((short)79), 0.02);
-            FUELS.put(new Short((short)81), 0.02);
-            FUELS.put(new Short((short)83), 0.02);
-            FUELS.put(new Short((short)85), 0.02);
-            FUELS.put(new Short((short)87), 0.02);
-            FUELS.put(new Short((short)89), 0.0035);
-            FUELS.put(new Short((short)91), 0.02);
-            FUELS.put(new Short((short)95), 0.02);
-            FUELS.put(new Short((short)78), 0.01);
-            FUELS.put(new Short((short)80), 0.01);
-            FUELS.put(new Short((short)82), 0.01);
-            FUELS.put(new Short((short)84), 0.01);
-            FUELS.put(new Short((short)86), 0.01);
-            FUELS.put(new Short((short)88), 0.01);
-            FUELS.put(new Short((short)90), 0.01);
-            FUELS.put(new Short((short)92), 0.01);
-            FUELS.put(new Short((short)96), 0.01);
+            FUELS.put((short) 15, 0.01);
+            FUELS.put((short) 28, 0.001);
+            FUELS.put((short) 160, 0.02);
+            FUELS.put((short) 168, 0.01);
+            FUELS.put((short) 179, 0.0035);
+            FUELS.put((short) 20, 0.0025);
+            FUELS.put((short) 21, 0.00125);
+            FUELS.put((short) 35, 0.02);
+            FUELS.put((short) 36, 0.011);
+            FUELS.put((short) 77, 0.02);
+            FUELS.put((short) 79, 0.02);
+            FUELS.put((short) 81, 0.02);
+            FUELS.put((short) 83, 0.02);
+            FUELS.put((short) 85, 0.02);
+            FUELS.put((short) 87, 0.02);
+            FUELS.put((short) 89, 0.0035);
+            FUELS.put((short) 91, 0.02);
+            FUELS.put((short) 95, 0.02);
+            FUELS.put((short) 78, 0.01);
+            FUELS.put((short) 80, 0.01);
+            FUELS.put((short) 82, 0.01);
+            FUELS.put((short) 84, 0.01);
+            FUELS.put((short) 86, 0.01);
+            FUELS.put((short) 88, 0.01);
+            FUELS.put((short) 90, 0.01);
+            FUELS.put((short) 92, 0.01);
+            FUELS.put((short) 96, 0.01);
             for (i=97; i<103; i++) {
-                FUELS.put(new Short((short)i), 0.0035);
+                FUELS.put((short) i, 0.0035);
             }
-            FUELS.put(new Short((short)154), 0.002);
-            FUELS.put(new Short((short)155), 0.002);
-            FUELS.put(new Short((short)156), 0.00333);
+            FUELS.put((short) 154, 0.002);
+            FUELS.put((short) 155, 0.002);
+            FUELS.put((short) 156, 0.00333);
 
             WIREP = new HashMap<Integer,Integer>();
 
@@ -1751,11 +1741,11 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
             FSPEED = new HashMap<Short,Double>();
 
             for (i=0; i<blocknames.length; i++) {
-                FSPEED.put(new Short((short)i), 0.001);
+                FSPEED.put((short) i, 0.001);
             }
 
-            FSPEED.put(new Short((short)85), -0.001);
-            FSPEED.put(new Short((short)86), -0.001);
+            FSPEED.put((short) 85, -0.001);
+            FSPEED.put((short) 86, -0.001);
 
             DDELAY = new HashMap<Integer,Integer>();
 
@@ -1779,32 +1769,101 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
             FRI2 = new ArrayList<Short>(0);
             FRN2 = new ArrayList<Short>(0);
 
-            FRI1.add(new Short((short)3)); FRN1.add(new Short((short)4)); FRI2.add(new Short((short)29)); FRN2.add(new Short((short)1));
-            FRI1.add(new Short((short)4)); FRN1.add(new Short((short)4)); FRI2.add(new Short((short)30)); FRN2.add(new Short((short)1));
-            FRI1.add(new Short((short)5)); FRN1.add(new Short((short)4)); FRI2.add(new Short((short)31)); FRN2.add(new Short((short)1));
-            FRI1.add(new Short((short)6)); FRN1.add(new Short((short)4)); FRI2.add(new Short((short)32)); FRN2.add(new Short((short)1));
-            FRI1.add(new Short((short)38)); FRN1.add(new Short((short)4)); FRI2.add(new Short((short)60)); FRN2.add(new Short((short)1));
-            FRI1.add(new Short((short)39)); FRN1.add(new Short((short)4)); FRI2.add(new Short((short)61)); FRN2.add(new Short((short)1));
-            FRI1.add(new Short((short)40)); FRN1.add(new Short((short)4)); FRI2.add(new Short((short)62)); FRN2.add(new Short((short)1));
-            FRI1.add(new Short((short)41)); FRN1.add(new Short((short)4)); FRI2.add(new Short((short)63)); FRN2.add(new Short((short)1));
-            FRI1.add(new Short((short)42)); FRN1.add(new Short((short)4)); FRI2.add(new Short((short)64)); FRN2.add(new Short((short)1));
-            FRI1.add(new Short((short)43)); FRN1.add(new Short((short)4)); FRI2.add(new Short((short)65)); FRN2.add(new Short((short)1));
-            FRI1.add(new Short((short)44)); FRN1.add(new Short((short)4)); FRI2.add(new Short((short)67)); FRN2.add(new Short((short)1));
-            FRI1.add(new Short((short)45)); FRN1.add(new Short((short)4)); FRI2.add(new Short((short)68)); FRN2.add(new Short((short)1));
-            FRI1.add(new Short((short)46)); FRN1.add(new Short((short)4)); FRI2.add(new Short((short)69)); FRN2.add(new Short((short)1));
-            FRI1.add(new Short((short)47)); FRN1.add(new Short((short)4)); FRI2.add(new Short((short)70)); FRN2.add(new Short((short)1));
-            FRI1.add(new Short((short)48)); FRN1.add(new Short((short)4)); FRI2.add(new Short((short)71)); FRN2.add(new Short((short)1));
-            FRI1.add(new Short((short)49)); FRN1.add(new Short((short)4)); FRI2.add(new Short((short)72)); FRN2.add(new Short((short)1));
-            FRI1.add(new Short((short)50)); FRN1.add(new Short((short)4)); FRI2.add(new Short((short)73)); FRN2.add(new Short((short)1));
+            FRI1.add((short) 3);
+            FRN1.add((short) 4);
+            FRI2.add((short) 29);
+            FRN2.add((short) 1);
+            FRI1.add((short) 4);
+            FRN1.add((short) 4);
+            FRI2.add((short) 30);
+            FRN2.add((short) 1);
+            FRI1.add((short) 5);
+            FRN1.add((short) 4);
+            FRI2.add((short) 31);
+            FRN2.add((short) 1);
+            FRI1.add((short) 6);
+            FRN1.add((short) 4);
+            FRI2.add((short) 32);
+            FRN2.add((short) 1);
+            FRI1.add((short) 38);
+            FRN1.add((short) 4);
+            FRI2.add((short) 60);
+            FRN2.add((short) 1);
+            FRI1.add((short) 39);
+            FRN1.add((short) 4);
+            FRI2.add((short) 61);
+            FRN2.add((short) 1);
+            FRI1.add((short) 40);
+            FRN1.add((short) 4);
+            FRI2.add((short) 62);
+            FRN2.add((short) 1);
+            FRI1.add((short) 41);
+            FRN1.add((short) 4);
+            FRI2.add((short) 63);
+            FRN2.add((short) 1);
+            FRI1.add((short) 42);
+            FRN1.add((short) 4);
+            FRI2.add((short) 64);
+            FRN2.add((short) 1);
+            FRI1.add((short) 43);
+            FRN1.add((short) 4);
+            FRI2.add((short) 65);
+            FRN2.add((short) 1);
+            FRI1.add((short) 44);
+            FRN1.add((short) 4);
+            FRI2.add((short) 67);
+            FRN2.add((short) 1);
+            FRI1.add((short) 45);
+            FRN1.add((short) 4);
+            FRI2.add((short) 68);
+            FRN2.add((short) 1);
+            FRI1.add((short) 46);
+            FRN1.add((short) 4);
+            FRI2.add((short) 69);
+            FRN2.add((short) 1);
+            FRI1.add((short) 47);
+            FRN1.add((short) 4);
+            FRI2.add((short) 70);
+            FRN2.add((short) 1);
+            FRI1.add((short) 48);
+            FRN1.add((short) 4);
+            FRI2.add((short) 71);
+            FRN2.add((short) 1);
+            FRI1.add((short) 49);
+            FRN1.add((short) 4);
+            FRI2.add((short) 72);
+            FRN2.add((short) 1);
+            FRI1.add((short) 50);
+            FRN1.add((short) 4);
+            FRI2.add((short) 73);
+            FRN2.add((short) 1);
             for (i=8; i>2; i--) {
-                FRI1.add(new Short((short)74)); FRN1.add(new Short((short)i)); FRI2.add(new Short((short)76)); FRN2.add(new Short((short)i));
-                FRI1.add(new Short((short)2)); FRN1.add(new Short((short)i)); FRI2.add(new Short((short)162)); FRN2.add(new Short((short)i));
-                FRI1.add(new Short((short)161)); FRN1.add(new Short((short)i)); FRI2.add(new Short((short)163)); FRN2.add(new Short((short)i));
-                FRI1.add(new Short((short)165)); FRN1.add(new Short((short)i)); FRI2.add(new Short((short)166)); FRN2.add(new Short((short)i));
-                FRI1.add(new Short((short)15)); FRN1.add(new Short((short)i)); FRI2.add(new Short((short)179)); FRN2.add(new Short((short)i));
+                FRI1.add((short) 74);
+                FRN1.add((short) i);
+                FRI2.add((short) 76);
+                FRN2.add((short) i);
+                FRI1.add((short) 2);
+                FRN1.add((short) i);
+                FRI2.add((short) 162);
+                FRN2.add((short) i);
+                FRI1.add((short) 161);
+                FRN1.add((short) i);
+                FRI2.add((short) 163);
+                FRN2.add((short) i);
+                FRI1.add((short) 165);
+                FRN1.add((short) i);
+                FRI2.add((short) 166);
+                FRN2.add((short) i);
+                FRI1.add((short) 15);
+                FRN1.add((short) i);
+                FRI2.add((short) 179);
+                FRN2.add((short) i);
             }
             for (j=97; j<103; j++) {
-                FRI1.add(new Short((short)j)); FRN1.add(new Short((short)1)); FRI2.add(new Short((short)167)); FRN2.add(new Short((short)8));
+                FRI1.add((short) j);
+                FRN1.add((short) 1);
+                FRI2.add((short) 167);
+                FRN2.add((short) 8);
             }
 
             bg = CYANISH;
@@ -1916,10 +1975,10 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
                                                         if (worlds[twy][twx] != null) {
                                                             wg2 = worlds[twy][twx].createGraphics();
                                                             fwg2 = fworlds[twy][twx].createGraphics();
-                                                            for (tly=Math.max(twy*CHUNKSIZE, (int)(player.iy-getHeight()/2+player.height/2+v*BLOCKSIZE)-64); tly<Math.min(twy*CHUNKSIZE+CHUNKSIZE, (int)(player.iy+getHeight()/2-player.height/2+v*BLOCKSIZE)+128); tly+=BLOCKSIZE) {
-                                                                for (tlx=Math.max(twx*CHUNKSIZE, (int)(player.ix-getWidth()/2+player.width/2+u*BLOCKSIZE)-64); tlx<Math.min(twx*CHUNKSIZE+CHUNKSIZE, (int)(player.ix+getWidth()/2-player.width/2+u*BLOCKSIZE)+112); tlx+=BLOCKSIZE) {
-                                                                    tx = (int)(tlx/BLOCKSIZE);
-                                                                    ty = (int)(tly/BLOCKSIZE);
+                                                            for (tly = Math.max(twy * CHUNKSIZE, player.iy - getHeight() / 2 + player.height / 2 + v * BLOCKSIZE - 64); tly < Math.min(twy * CHUNKSIZE + CHUNKSIZE, player.iy + getHeight() / 2 - player.height / 2 + v * BLOCKSIZE + 128); tly += BLOCKSIZE) {
+                                                                for (tlx = Math.max(twx * CHUNKSIZE, player.ix - getWidth() / 2 + player.width / 2 + u * BLOCKSIZE - 64); tlx < Math.min(twx * CHUNKSIZE + CHUNKSIZE, player.ix + getWidth() / 2 - player.width / 2 + u * BLOCKSIZE + 112); tlx += BLOCKSIZE) {
+                                                                    tx = tlx / BLOCKSIZE;
+                                                                    ty = tly / BLOCKSIZE;
                                                                     if (tx >= 0 && tx < size && ty >= 0 && ty < size) {
                                                                         if (!drawn[ty][tx]) {
                                                                             somevar = true;
@@ -2310,7 +2369,7 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
             for (j=0; j<durLis2[i].length; j++) {
                 dur.put(j+100, durList[i][j]);
             }
-            DURABILITY.put(new Short((short)toolList[i]), dur);
+            DURABILITY.put(new Short(toolList[i]), dur);
         }
     }
 
@@ -2354,91 +2413,91 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
 
         if (DEBUG_ITEMS != null) {
             if (DEBUG_ITEMS.equals("normal")) {
-                inventory.addItem(new Short((short)172), new Short((short)1));
-                inventory.addItem(new Short((short)173), new Short((short)1));
-                inventory.addItem(new Short((short)174), new Short((short)1));
-                inventory.addItem(new Short((short)164), new Short((short)100));
-                inventory.addItem(new Short((short)35), new Short((short)100));
-                inventory.addItem(new Short((short)36), new Short((short)100));
-                inventory.addItem(new Short((short)37), new Short((short)100));
-                inventory.addItem(new Short((short)20), new Short((short)5));
-                inventory.addItem(new Short((short)27), new Short((short)5));
-                inventory.addItem(new Short((short)33), new Short((short)1));
-                inventory.addItem(new Short((short)28), new Short((short)100));
-                inventory.addItem(new Short((short)50), new Short((short)100));
-                inventory.addItem(new Short((short)1), new Short((short)100));
-                inventory.addItem(new Short((short)2), new Short((short)100));
-                inventory.addItem(new Short((short)15), new Short((short)100));
+                inventory.addItem((short) 172, (short) 1);
+                inventory.addItem((short) 173, (short) 1);
+                inventory.addItem((short) 174, (short) 1);
+                inventory.addItem((short) 164, (short) 100);
+                inventory.addItem((short) 35, (short) 100);
+                inventory.addItem((short) 36, (short) 100);
+                inventory.addItem((short) 37, (short) 100);
+                inventory.addItem((short) 20, (short) 5);
+                inventory.addItem((short) 27, (short) 5);
+                inventory.addItem((short) 33, (short) 1);
+                inventory.addItem((short) 28, (short) 100);
+                inventory.addItem((short) 50, (short) 100);
+                inventory.addItem((short) 1, (short) 100);
+                inventory.addItem((short) 2, (short) 100);
+                inventory.addItem((short) 15, (short) 100);
             }
             if (DEBUG_ITEMS.equals("tools")) {
-                inventory.addItem(new Short((short)154), new Short((short)1));
-                inventory.addItem(new Short((short)155), new Short((short)1));
-                inventory.addItem(new Short((short)156), new Short((short)1));
-                inventory.addItem(new Short((short)157), new Short((short)1));
-                inventory.addItem(new Short((short)158), new Short((short)1));
-                inventory.addItem(new Short((short)159), new Short((short)1));
-                inventory.addItem(new Short((short)7), new Short((short)1));
-                inventory.addItem(new Short((short)11), new Short((short)1));
-                inventory.addItem(new Short((short)12), new Short((short)1));
-                inventory.addItem(new Short((short)8), new Short((short)1));
-                inventory.addItem(new Short((short)13), new Short((short)1));
-                inventory.addItem(new Short((short)14), new Short((short)1));
-                inventory.addItem(new Short((short)9), new Short((short)1));
-                inventory.addItem(new Short((short)16), new Short((short)1));
-                inventory.addItem(new Short((short)17), new Short((short)1));
-                inventory.addItem(new Short((short)10), new Short((short)1));
-                inventory.addItem(new Short((short)18), new Short((short)1));
-                inventory.addItem(new Short((short)33), new Short((short)1));
-                inventory.addItem(new Short((short)51), new Short((short)1));
-                inventory.addItem(new Short((short)52), new Short((short)1));
-                inventory.addItem(new Short((short)53), new Short((short)1));
-                inventory.addItem(new Short((short)54), new Short((short)1));
-                inventory.addItem(new Short((short)55), new Short((short)1));
-                inventory.addItem(new Short((short)56), new Short((short)1));
-                inventory.addItem(new Short((short)57), new Short((short)1));
-                inventory.addItem(new Short((short)58), new Short((short)1));
-                inventory.addItem(new Short((short)59), new Short((short)1));
-                inventory.addItem(new Short((short)145), new Short((short)1));
-                inventory.addItem(new Short((short)146), new Short((short)1));
-                inventory.addItem(new Short((short)147), new Short((short)1));
-                inventory.addItem(new Short((short)148), new Short((short)1));
-                inventory.addItem(new Short((short)149), new Short((short)1));
-                inventory.addItem(new Short((short)150), new Short((short)1));
-                inventory.addItem(new Short((short)169), new Short((short)1));
-                inventory.addItem(new Short((short)170), new Short((short)1));
-                inventory.addItem(new Short((short)171), new Short((short)1));
-                inventory.addItem(new Short((short)172), new Short((short)1));
-                inventory.addItem(new Short((short)173), new Short((short)1));
-                inventory.addItem(new Short((short)174), new Short((short)1));
+                inventory.addItem((short) 154, (short) 1);
+                inventory.addItem((short) 155, (short) 1);
+                inventory.addItem((short) 156, (short) 1);
+                inventory.addItem((short) 157, (short) 1);
+                inventory.addItem((short) 158, (short) 1);
+                inventory.addItem((short) 159, (short) 1);
+                inventory.addItem((short) 7, (short) 1);
+                inventory.addItem((short) 11, (short) 1);
+                inventory.addItem((short) 12, (short) 1);
+                inventory.addItem((short) 8, (short) 1);
+                inventory.addItem((short) 13, (short) 1);
+                inventory.addItem((short) 14, (short) 1);
+                inventory.addItem((short) 9, (short) 1);
+                inventory.addItem((short) 16, (short) 1);
+                inventory.addItem((short) 17, (short) 1);
+                inventory.addItem((short) 10, (short) 1);
+                inventory.addItem((short) 18, (short) 1);
+                inventory.addItem((short) 33, (short) 1);
+                inventory.addItem((short) 51, (short) 1);
+                inventory.addItem((short) 52, (short) 1);
+                inventory.addItem((short) 53, (short) 1);
+                inventory.addItem((short) 54, (short) 1);
+                inventory.addItem((short) 55, (short) 1);
+                inventory.addItem((short) 56, (short) 1);
+                inventory.addItem((short) 57, (short) 1);
+                inventory.addItem((short) 58, (short) 1);
+                inventory.addItem((short) 59, (short) 1);
+                inventory.addItem((short) 145, (short) 1);
+                inventory.addItem((short) 146, (short) 1);
+                inventory.addItem((short) 147, (short) 1);
+                inventory.addItem((short) 148, (short) 1);
+                inventory.addItem((short) 149, (short) 1);
+                inventory.addItem((short) 150, (short) 1);
+                inventory.addItem((short) 169, (short) 1);
+                inventory.addItem((short) 170, (short) 1);
+                inventory.addItem((short) 171, (short) 1);
+                inventory.addItem((short) 172, (short) 1);
+                inventory.addItem((short) 173, (short) 1);
+                inventory.addItem((short) 174, (short) 1);
 
-                inventory.addItem(new Short((short)19), new Short((short)1));
+                inventory.addItem((short) 19, (short) 1);
             }
             if (DEBUG_ITEMS.equals("testing")) {
-                inventory.addItem(new Short((short)172), new Short((short)1));
-                inventory.addItem(new Short((short)173), new Short((short)1));
-                inventory.addItem(new Short((short)175), new Short((short)100));
-                inventory.addItem(new Short((short)15), new Short((short)100));
-                inventory.addItem(new Short((short)35), new Short((short)100));
-                inventory.addItem(new Short((short)36), new Short((short)100));
-                inventory.addItem(new Short((short)37), new Short((short)100));
-                inventory.addItem(new Short((short)176), new Short((short)100));
-                inventory.addItem(new Short((short)177), new Short((short)100));
-                inventory.addItem(new Short((short)178), new Short((short)100));
-                inventory.addItem(new Short((short)27), new Short((short)100));
-                inventory.addItem(new Short((short)33), new Short((short)1));
-                inventory.addItem(new Short((short)86), new Short((short)100));
-                inventory.addItem(new Short((short)49), new Short((short)100));
-                inventory.addItem(new Short((short)180), new Short((short)100));
-                inventory.addItem(new Short((short)181), new Short((short)100));
-                inventory.addItem(new Short((short)182), new Short((short)100));
-                inventory.addItem(new Short((short)183), new Short((short)100));
-                inventory.addItem(new Short((short)184), new Short((short)100));
-                inventory.addItem(new Short((short)185), new Short((short)100));
-                inventory.addItem(new Short((short)186), new Short((short)100));
-                inventory.addItem(new Short((short)187), new Short((short)100));
-                inventory.addItem(new Short((short)188), new Short((short)100));
-                inventory.addItem(new Short((short)189), new Short((short)100));
-                inventory.addItem(new Short((short)190), new Short((short)1));
+                inventory.addItem((short) 172, (short) 1);
+                inventory.addItem((short) 173, (short) 1);
+                inventory.addItem((short) 175, (short) 100);
+                inventory.addItem((short) 15, (short) 100);
+                inventory.addItem((short) 35, (short) 100);
+                inventory.addItem((short) 36, (short) 100);
+                inventory.addItem((short) 37, (short) 100);
+                inventory.addItem((short) 176, (short) 100);
+                inventory.addItem((short) 177, (short) 100);
+                inventory.addItem((short) 178, (short) 100);
+                inventory.addItem((short) 27, (short) 100);
+                inventory.addItem((short) 33, (short) 1);
+                inventory.addItem((short) 86, (short) 100);
+                inventory.addItem((short) 49, (short) 100);
+                inventory.addItem((short) 180, (short) 100);
+                inventory.addItem((short) 181, (short) 100);
+                inventory.addItem((short) 182, (short) 100);
+                inventory.addItem((short) 183, (short) 100);
+                inventory.addItem((short) 184, (short) 100);
+                inventory.addItem((short) 185, (short) 100);
+                inventory.addItem((short) 186, (short) 100);
+                inventory.addItem((short) 187, (short) 100);
+                inventory.addItem((short) 188, (short) 100);
+                inventory.addItem((short) 189, (short) 100);
+                inventory.addItem((short) 190, (short) 1);
             }
         }
 
@@ -2805,9 +2864,9 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
 
         if (!DEBUG_PEACEFUL && mobCount < 100) {
             if (msi == 1) {
-                for (ay=(int)(player.iy/BLOCKSIZE)-125; ay<(int)(player.iy/BLOCKSIZE)+125; ay++) {
-                    for (ax=(int)(player.ix/BLOCKSIZE)-125; ax<(int)(player.ix/BLOCKSIZE)+125; ax++) {
-                        if (random.nextInt((int)(100000/DEBUG_HOSTILE)) == 0) {
+                for (ay = player.iy / BLOCKSIZE - 125; ay < player.iy / BLOCKSIZE + 125; ay++) {
+                    for (ax = player.ix / BLOCKSIZE - 125; ax < player.ix / BLOCKSIZE + 125; ax++) {
+                        if (random.nextInt(100000 / DEBUG_HOSTILE) == 0) {
                             xpos = ax+random.nextInt(20)-10;
                             ypos = ay+random.nextInt(20)-10;
                             xpos2 = ax+random.nextInt(20)-10;
@@ -2922,8 +2981,8 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
                                     ymax = 3;
                                 }
                                 doMobSpawn = true;
-                                for (x=(int)(xpos/BLOCKSIZE); x<(int)(xpos/BLOCKSIZE+xmax); x++) {
-                                    for (y=(int)(ypos/BLOCKSIZE); y<(int)(ypos/BLOCKSIZE+ymax); y++) {
+                                for (x = xpos / BLOCKSIZE; x < xpos / BLOCKSIZE + xmax; x++) {
+                                    for (y = ypos / BLOCKSIZE; y < ypos / BLOCKSIZE + ymax; y++) {
                                         if (y > 0 && y < HEIGHT-1 && blocks[1][y][x] != 0 && blockcds[blocks[1][y][x]]) {
                                             doMobSpawn = false;
                                         }
@@ -3280,16 +3339,16 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
                     }
                     showTool = true;
                     toolAngle = 4.7;
-                    ux = (int)(mousePos2[0]/BLOCKSIZE);
-                    uy = (int)(mousePos2[1]/BLOCKSIZE);
-                    ux2 = (int)(mousePos2[0]/BLOCKSIZE);
-                    uy2 = (int)(mousePos2[1]/BLOCKSIZE);
+                    ux = mousePos2[0] / BLOCKSIZE;
+                    uy = mousePos2[1] / BLOCKSIZE;
+                    ux2 = mousePos2[0] / BLOCKSIZE;
+                    uy2 = mousePos2[1] / BLOCKSIZE;
                     if (Math.sqrt(Math.pow(player.x+player.image.getWidth()-ux2*BLOCKSIZE+BLOCKSIZE/2, 2) + Math.pow(player.y+player.image.getHeight()-uy2*BLOCKSIZE+BLOCKSIZE/2, 2)) <= 160 ||
                         Math.sqrt(Math.pow(player.x+player.image.getWidth()-ux2*BLOCKSIZE+BLOCKSIZE/2+WIDTH*BLOCKSIZE, 2) + Math.pow(player.y+player.image.getHeight()-uy2*BLOCKSIZE+BLOCKSIZE/2, 2)) <= 160 || DEBUG_REACH) {
-                        ucx = ux - CHUNKBLOCKS * ((int)(ux/CHUNKBLOCKS));
-                        ucy = uy - CHUNKBLOCKS * ((int)(uy/CHUNKBLOCKS));
+                        ucx = ux - CHUNKBLOCKS * ux / CHUNKBLOCKS;
+                        ucy = uy - CHUNKBLOCKS * uy / CHUNKBLOCKS;
                         if (Arrays.asList(toolList).contains(inventory.tool())) {
-                            if (blocks[layer][uy][ux] != 0 && Arrays.asList(BLOCKTOOLS.get(blocks[layer][uy][ux])).contains(inventory.tool())) {
+                            if (layer < blocks.length && uy < blocks[layer].length && ux < blocks[layer][uy].length && blocks[layer][uy][ux] != 0 && Arrays.asList(BLOCKTOOLS.get(blocks[layer][uy][ux])).contains(inventory.tool())) {
                                 blockdns[uy][ux] = (byte)random.nextInt(5);
                                 drawn[uy][ux] = false;
                                 if (ux == mx && uy == my && inventory.tool() == miningTool) {
@@ -3681,11 +3740,11 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
             if (checkBlocks) {
                 if (!(mousePos2[0] < 0 || mousePos2[0] >= WIDTH*BLOCKSIZE ||
                       mousePos2[1] < 0 || mousePos2[1] >= HEIGHT*BLOCKSIZE)) {
-                    ux = (int)(mousePos2[0]/BLOCKSIZE);
-                    uy = (int)(mousePos2[1]/BLOCKSIZE);
+                    ux = mousePos2[0] / BLOCKSIZE;
+                    uy = mousePos2[1] / BLOCKSIZE;
                     if (DEBUG_REACH || Math.sqrt(Math.pow(player.x+player.image.getWidth()-ux*BLOCKSIZE+BLOCKSIZE/2, 2) + Math.pow(player.y+player.image.getHeight()-uy*BLOCKSIZE+BLOCKSIZE/2, 2)) <= 160) {
-                        ucx = ux - CHUNKBLOCKS * ((int)(ux/CHUNKBLOCKS));
-                        ucy = uy - CHUNKBLOCKS * ((int)(uy/CHUNKBLOCKS));
+                        ucx = ux - CHUNKBLOCKS * ux / CHUNKBLOCKS;
+                        ucy = uy - CHUNKBLOCKS * uy / CHUNKBLOCKS;
                         if (blocks[layer][uy][ux] >= 8 && blocks[layer][uy][ux] <= 14 || blocks[layer][uy][ux] == 17 || blocks[layer][uy][ux] == 23 || blocks[layer][uy][ux] >= 80 && blocks[layer][uy][ux] <= 82) {
                             if (ic != null) {
                                 if (!ic.type.equals("workbench")) {
@@ -4451,7 +4510,7 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
                 }
             }
             while (true) {
-                if (TORCHESR.get(ITEMBLOCKS.get(BLOCKDROPS.get(blocks[layer][uy][ux-1]))) != null && TORCHESR.get(ITEMBLOCKS.get(BLOCKDROPS.get(blocks[layer][uy][ux-1]))) == blocks[layer][uy][ux-1] || BLOCKDROPS.get(blocks[layer][uy][ux-1]) != null && (BLOCKDROPS.get(blocks[layer][uy][ux-1]) == 178 || BLOCKDROPS.get(blocks[layer][uy][ux-1]) == 182)) {
+                if (TORCHESR.get(ITEMBLOCKS.get(BLOCKDROPS.get(blocks[layer][uy][ux - 1]))) != null && Objects.equals(TORCHESR.get(ITEMBLOCKS.get(BLOCKDROPS.get(blocks[layer][uy][ux - 1]))), blocks[layer][uy][ux - 1]) || BLOCKDROPS.get(blocks[layer][uy][ux - 1]) != null && (BLOCKDROPS.get(blocks[layer][uy][ux - 1]) == 178 || BLOCKDROPS.get(blocks[layer][uy][ux - 1]) == 182)) {
                     entities.add(new Entity((ux-1)*BLOCKSIZE, uy*BLOCKSIZE, random.nextDouble()*4-2, -2, BLOCKDROPS.get(blocks[layer][uy][ux-1]), (short)1));
                     removeBlockLighting(ux-1, uy);
                     if (layer == 1) {
@@ -4467,7 +4526,7 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
                     }
                     drawn[uy][ux-1] = false;
                 }
-                if (TORCHESL.get(ITEMBLOCKS.get(BLOCKDROPS.get(blocks[layer][uy][ux+1]))) != null && TORCHESL.get(ITEMBLOCKS.get(BLOCKDROPS.get(blocks[layer][uy][ux+1]))) == blocks[layer][uy][ux+1] || BLOCKDROPS.get(blocks[layer][uy][ux+1]) != null && (BLOCKDROPS.get(blocks[layer][uy][ux+1]) == 178 || BLOCKDROPS.get(blocks[layer][uy][ux+1]) == 182)) {
+                if (TORCHESL.get(ITEMBLOCKS.get(BLOCKDROPS.get(blocks[layer][uy][ux + 1]))) != null && Objects.equals(TORCHESL.get(ITEMBLOCKS.get(BLOCKDROPS.get(blocks[layer][uy][ux + 1]))), blocks[layer][uy][ux + 1]) || BLOCKDROPS.get(blocks[layer][uy][ux + 1]) != null && (BLOCKDROPS.get(blocks[layer][uy][ux + 1]) == 178 || BLOCKDROPS.get(blocks[layer][uy][ux + 1]) == 182)) {
                     entities.add(new Entity((ux+1)*BLOCKSIZE, uy*BLOCKSIZE, random.nextDouble()*4-2, -2, BLOCKDROPS.get(blocks[layer][uy][ux+1]), (short)1));
                     removeBlockLighting(ux+1, uy);
                     if (layer == 1) {
@@ -4600,11 +4659,11 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
             cloud = clouds[cloudsn.get(cloudsn.size()-1)];
             if (random.nextInt(2) == 0) {
                 cloudsx.add((double)(-cloud.getWidth()*2));
-                cloudsv.add((double)(0.1*DEBUG_ACCEL));
+                cloudsv.add(0.1 * DEBUG_ACCEL);
             }
             else {
                 cloudsx.add((double)getWidth());
-                cloudsv.add((double)(-0.1*DEBUG_ACCEL));
+                cloudsv.add(-0.1 * DEBUG_ACCEL);
             }
             cloudsy.add(random.nextDouble()*(getHeight()-cloud.getHeight())+cloud.getHeight());
         }
@@ -5192,7 +5251,7 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
                 if (lsources[y][x]) {
                     n = findBlockLightSource(x, y);
                     if (isReachedBySunlight(x, y)) {
-                        lights[y][x] = this.max(lights[y][x], n, sunlightlevel);
+                        lights[y][x] = max(lights[y][x], n, sunlightlevel);
                     }
                     else {
                         lights[y][x] = Math.max(lights[y][x], n);
@@ -5520,8 +5579,8 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
 
             if (showInv) {
                 pg2.drawImage(inventory.image,
-                    0, 0, inventory.image.getWidth(), (int)inventory.image.getHeight(),
-                    0, 0, inventory.image.getWidth(), (int)inventory.image.getHeight(),
+                        0, 0, inventory.image.getWidth(), inventory.image.getHeight(),
+                        0, 0, inventory.image.getWidth(), inventory.image.getHeight(),
                     null);
                 pg2.drawImage(armor.image,
                     inventory.image.getWidth() + 6, 6, inventory.image.getWidth() + 6 + armor.image.getWidth(), 6 + armor.image.getHeight(),
@@ -5534,8 +5593,8 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
             }
             else {
                 pg2.drawImage(inventory.image,
-                    0, 0, inventory.image.getWidth(), (int)inventory.image.getHeight()/4,
-                    0, 0, inventory.image.getWidth(), (int)inventory.image.getHeight()/4,
+                        0, 0, inventory.image.getWidth(), inventory.image.getHeight() / 4,
+                        0, 0, inventory.image.getWidth(), inventory.image.getHeight() / 4,
                     null);
             }
 
@@ -5572,7 +5631,7 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
                 width = itemImgs.get(moveItem).getWidth();
                 height = itemImgs.get(moveItem).getHeight();
                 pg2.drawImage(itemImgs.get(moveItem),
-                    mousePos[0]+12+((int)(24-(double)12/this.max(width, height, 12)*width*2)/2), mousePos[1]+12+((int)(24-(double)12/this.max(width, height, 12)*height*2)/2), mousePos[0]+36-((int)(24-(double)12/this.max(width, height, 12)*width*2)/2), mousePos[1]+36-((int)(24-(double)12/this.max(width, height, 12)*height*2)/2),
+                        mousePos[0] + 12 + ((int) (24 - (double) 12 / max(width, height, 12) * width * 2) / 2), mousePos[1] + 12 + ((int) (24 - (double) 12 / max(width, height, 12) * height * 2) / 2), mousePos[0] + 36 - ((int) (24 - (double) 12 / max(width, height, 12) * width * 2) / 2), mousePos[1] + 36 - ((int) (24 - (double) 12 / max(width, height, 12) * height * 2) / 2),
                     0, 0, width, height,
                     null);
                 if (moveNum > 1) {
@@ -5601,7 +5660,7 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
                         mousePos[1] >= uy*46+6 && mousePos[1] <= uy*46+46 && inventory.ids[uy*10+ux] != 0) {
                         pg2.setFont(mobFont);
                         pg2.setColor(Color.WHITE);
-                        if (TOOLDURS.get((short)inventory.ids[uy*10+ux]) != null) {
+                        if (TOOLDURS.get(inventory.ids[uy * 10 + ux]) != null) {
                             pg2.drawString(UIBLOCKS.get(items[inventory.ids[uy*10+ux]]) + " (" + (int)((double)inventory.durs[uy*10+ux]/TOOLDURS.get(inventory.ids[uy*10+ux])*100) + "%)", mousePos[0], mousePos[1]);
                         }
                         else {
@@ -5615,9 +5674,9 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
             pg2.drawString("Health: " + player.hp + "/" + player.thp, getWidth()-125, 20);
             pg2.drawString("Armor: " + player.sumArmor(), getWidth()-125, 40);
             if (DEBUG_STATS) {
-                pg2.drawString("(" + ((int)player.ix/16) + ", " + ((int)player.iy/16) + ")", getWidth()-125, 60);
+                pg2.drawString("(" + (player.ix / 16) + ", " + (player.iy / 16) + ")", getWidth() - 125, 60);
                 if (player.iy >= 0 && player.iy < HEIGHT*BLOCKSIZE) {
-                    pg2.drawString(checkBiome((int)player.ix/16+u, (int)player.iy/16+v) + " " + lights[(int)player.iy/16+v][(int)player.ix/16+u], getWidth()-125, 80);
+                    pg2.drawString(checkBiome(player.ix / 16 + u, player.iy / 16 + v) + " " + lights[player.iy / 16 + v][player.ix / 16 + u], getWidth() - 125, 80);
                 }
             }
             if (showInv) {
@@ -5628,7 +5687,7 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
                             mousePos[1] >= uy*40+52 && mousePos[1] < uy*40+92 && cic.ids[uy*2+ux] != 0) {
                             pg2.setFont(mobFont);
                             pg2.setColor(Color.WHITE);
-                            if (TOOLDURS.get((short)cic.ids[uy*2+ux]) != null) {
+                            if (TOOLDURS.get(cic.ids[uy * 2 + ux]) != null) {
                                 pg2.drawString(UIBLOCKS.get(items[cic.ids[uy*2+ux]]) + " (" + (int)((double)cic.durs[uy*2+ux]/TOOLDURS.get(cic.ids[uy*2+ux])*100) + "%)", mousePos[0], mousePos[1]);
                             }
                             else {
@@ -5642,7 +5701,7 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
                     mousePos[1] >= 20+52 && mousePos[1] < 20+92 && cic.ids[4] != 0) {
                     pg2.setFont(mobFont);
                     pg2.setColor(Color.WHITE);
-                    if (TOOLDURS.get((short)cic.ids[4]) != null) {
+                    if (TOOLDURS.get(cic.ids[4]) != null) {
                         pg2.drawString(UIBLOCKS.get(items[cic.ids[4]]) + " (" + (int)((double)cic.durs[4]/TOOLDURS.get(cic.ids[4])*100) + "%)", mousePos[0], mousePos[1]);
                     }
                     else {
@@ -5654,7 +5713,7 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
                         mousePos[1] >= 6 + uy*46 && mousePos[1] < 6 + uy*46+46 && armor.ids[uy] != 0) {
                         pg2.setFont(mobFont);
                         pg2.setColor(Color.WHITE);
-                        if (TOOLDURS.get((short)armor.ids[uy]) != null) {
+                        if (TOOLDURS.get(armor.ids[uy]) != null) {
                             pg2.drawString(UIBLOCKS.get(items[armor.ids[uy]]) + " (" + (int)((double)armor.durs[uy]/TOOLDURS.get(armor.ids[uy])*100) + "%)", mousePos[0], mousePos[1]);
                         }
                         else {
@@ -5673,7 +5732,7 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
                                 ic.ids[uy*3+ux] != 0) {
                                 pg2.setFont(mobFont);
                                 pg2.setColor(Color.WHITE);
-                                if (TOOLDURS.get((short)ic.ids[uy*3+ux]) != null) {
+                                if (TOOLDURS.get(ic.ids[uy * 3 + ux]) != null) {
                                     pg2.drawString(UIBLOCKS.get(items[ic.ids[uy*3+ux]]) + " (" + (int)((double)ic.durs[uy*3+ux]/TOOLDURS.get(ic.ids[uy*3+ux])*100) + "%)", mousePos[0], mousePos[1]);
                                 }
                                 else {
@@ -5688,7 +5747,7 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
                         ic.ids[9] != 0) {
                         pg2.setFont(mobFont);
                         pg2.setColor(Color.WHITE);
-                        if (TOOLDURS.get((short)ic.ids[9]) != null) {
+                        if (TOOLDURS.get(ic.ids[9]) != null) {
                             pg2.drawString(UIBLOCKS.get(items[ic.ids[9]]) + " (" + (int)((double)ic.durs[9]/TOOLDURS.get(ic.ids[9])*100) + "%)", mousePos[0], mousePos[1]);
                         }
                         else {
@@ -5709,7 +5768,7 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
                                 ic.ids[uy*inventory.CX+ux] != 0) {
                                 pg2.setFont(mobFont);
                                 pg2.setColor(Color.WHITE);
-                                if (TOOLDURS.get((short)ic.ids[uy*inventory.CX+ux]) != null) {
+                                if (TOOLDURS.get(ic.ids[uy * inventory.CX + ux]) != null) {
                                     pg2.drawString(UIBLOCKS.get(items[ic.ids[uy*inventory.CX+ux]]) + " (" + (int)((double)ic.durs[uy*inventory.CX+ux]/TOOLDURS.get(ic.ids[uy*inventory.CX+ux])*100) + "%)", mousePos[0], mousePos[1]);
                                 }
                                 else {
@@ -5725,7 +5784,7 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
                         ic.ids[0] != 0) {
                         pg2.setFont(mobFont);
                         pg2.setColor(Color.WHITE);
-                        if (TOOLDURS.get((short)ic.ids[0]) != null) {
+                        if (TOOLDURS.get(ic.ids[0]) != null) {
                             pg2.drawString(UIBLOCKS.get(items[ic.ids[0]]) + " (" + (int)((double)ic.durs[0]/TOOLDURS.get(ic.ids[0])*100) + "%)", mousePos[0], mousePos[1]);
                         }
                         else {
@@ -5737,7 +5796,7 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
                         ic.ids[1] != 0) {
                         pg2.setFont(mobFont);
                         pg2.setColor(Color.WHITE);
-                        if (TOOLDURS.get((short)ic.ids[1]) != null) {
+                        if (TOOLDURS.get(ic.ids[1]) != null) {
                             pg2.drawString(UIBLOCKS.get(items[ic.ids[1]]) + " (" + (int)((double)ic.durs[1]/TOOLDURS.get(ic.ids[1])*100) + "%)", mousePos[1], mousePos[1]);
                         }
                         else {
@@ -5749,7 +5808,7 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
                         ic.ids[2] != 0) {
                         pg2.setFont(mobFont);
                         pg2.setColor(Color.WHITE);
-                        if (TOOLDURS.get((short)ic.ids[2]) != null) {
+                        if (TOOLDURS.get(ic.ids[2]) != null) {
                             pg2.drawString(UIBLOCKS.get(items[ic.ids[2]]) + " (" + (int)((double)ic.durs[2]/TOOLDURS.get(ic.ids[2])*100) + "%)", mousePos[2], mousePos[1]);
                         }
                         else {
@@ -5761,7 +5820,7 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
                         ic.ids[3] != 0) {
                         pg2.setFont(mobFont);
                         pg2.setColor(Color.WHITE);
-                        if (TOOLDURS.get((short)ic.ids[3]) != null) {
+                        if (TOOLDURS.get(ic.ids[3]) != null) {
                             pg2.drawString(UIBLOCKS.get(items[ic.ids[3]]) + " (" + (int)((double)ic.durs[3]/TOOLDURS.get(ic.ids[3])*100) + "%)", mousePos[3], mousePos[1]);
                         }
                         else {
@@ -5809,7 +5868,7 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
             pg2.setColor(Color.GREEN);
             pg2.drawString("Generating new world... Please wait.", getWidth()/2-200, getHeight()/2-5);
         }
-        ((Graphics2D)g).drawImage(screen,
+        g.drawImage(screen,
             0, 0, getWidth(), getHeight(),
             0, 0, getWidth(), getHeight(),
             null);
@@ -6104,23 +6163,23 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
     }
 
     public void keyPressed(KeyEvent key) {
-        if (key.getKeyCode() == key.VK_LEFT || key.getKeyCode() == key.VK_A) {
+        if (key.getKeyCode() == KeyEvent.VK_LEFT || key.getKeyCode() == KeyEvent.VK_A) {
             queue[0] = true;
         }
-        if (key.getKeyCode() == key.VK_RIGHT || key.getKeyCode() == key.VK_D) {
+        if (key.getKeyCode() == KeyEvent.VK_RIGHT || key.getKeyCode() == KeyEvent.VK_D) {
             queue[1] = true;
         }
-        if (key.getKeyCode() == key.VK_UP || key.getKeyCode() == key.VK_W) {
+        if (key.getKeyCode() == KeyEvent.VK_UP || key.getKeyCode() == KeyEvent.VK_W) {
             queue[2] = true;
         }
-        if (key.getKeyCode() == key.VK_DOWN || key.getKeyCode() == key.VK_S) {
+        if (key.getKeyCode() == KeyEvent.VK_DOWN || key.getKeyCode() == KeyEvent.VK_S) {
             queue[6] = true;
         }
-        if (key.getKeyCode() == key.VK_SHIFT) {
+        if (key.getKeyCode() == KeyEvent.VK_SHIFT) {
             queue[5] = true;
         }
         if (state.equals("ingame")) {
-            if (key.getKeyCode() == key.VK_ESCAPE) {
+            if (key.getKeyCode() == KeyEvent.VK_ESCAPE) {
                 if (ic != null) {
                     if (!ic.type.equals("workbench")) {
                         machinesx.add(icx);
@@ -6178,87 +6237,87 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
                 }
             }
             if (!showTool) {
-                if (key.getKeyCode() == key.VK_1) {
+                if (key.getKeyCode() == KeyEvent.VK_1) {
                     inventory.select(1);
                 }
-                if (key.getKeyCode() == key.VK_2) {
+                if (key.getKeyCode() == KeyEvent.VK_2) {
                     inventory.select(2);
                 }
-                if (key.getKeyCode() == key.VK_3) {
+                if (key.getKeyCode() == KeyEvent.VK_3) {
                     inventory.select(3);
                 }
-                if (key.getKeyCode() == key.VK_4) {
+                if (key.getKeyCode() == KeyEvent.VK_4) {
                     inventory.select(4);
                 }
-                if (key.getKeyCode() == key.VK_5) {
+                if (key.getKeyCode() == KeyEvent.VK_5) {
                     inventory.select(5);
                 }
-                if (key.getKeyCode() == key.VK_6) {
+                if (key.getKeyCode() == KeyEvent.VK_6) {
                     inventory.select(6);
                 }
-                if (key.getKeyCode() == key.VK_7) {
+                if (key.getKeyCode() == KeyEvent.VK_7) {
                     inventory.select(7);
                 }
-                if (key.getKeyCode() == key.VK_8) {
+                if (key.getKeyCode() == KeyEvent.VK_8) {
                     inventory.select(8);
                 }
-                if (key.getKeyCode() == key.VK_9) {
+                if (key.getKeyCode() == KeyEvent.VK_9) {
                     inventory.select(9);
                 }
-                if (key.getKeyCode() == key.VK_0) {
+                if (key.getKeyCode() == KeyEvent.VK_0) {
                     inventory.select(0);
                 }
             }
         }
         char c = 0;
-        if (key.getKeyCode() == key.VK_Q) c = 'q';
-        if (key.getKeyCode() == key.VK_W) c = 'w';
-        if (key.getKeyCode() == key.VK_E) c = 'e';
-        if (key.getKeyCode() == key.VK_R) c = 'r';
-        if (key.getKeyCode() == key.VK_T) c = 't';
-        if (key.getKeyCode() == key.VK_Y) c = 'y';
-        if (key.getKeyCode() == key.VK_U) c = 'u';
-        if (key.getKeyCode() == key.VK_I) c = 'i';
-        if (key.getKeyCode() == key.VK_O) c = 'o';
-        if (key.getKeyCode() == key.VK_P) c = 'p';
-        if (key.getKeyCode() == key.VK_A) c = 'a';
-        if (key.getKeyCode() == key.VK_S) c = 's';
-        if (key.getKeyCode() == key.VK_D) c = 'd';
-        if (key.getKeyCode() == key.VK_F) c = 'f';
-        if (key.getKeyCode() == key.VK_G) c = 'g';
-        if (key.getKeyCode() == key.VK_H) c = 'h';
-        if (key.getKeyCode() == key.VK_J) c = 'j';
-        if (key.getKeyCode() == key.VK_K) c = 'k';
-        if (key.getKeyCode() == key.VK_L) c = 'l';
-        if (key.getKeyCode() == key.VK_Z) c = 'z';
-        if (key.getKeyCode() == key.VK_X) c = 'x';
-        if (key.getKeyCode() == key.VK_C) c = 'c';
-        if (key.getKeyCode() == key.VK_V) c = 'v';
-        if (key.getKeyCode() == key.VK_B) c = 'b';
-        if (key.getKeyCode() == key.VK_N) c = 'n';
-        if (key.getKeyCode() == key.VK_M) c = 'm';
-        if (key.getKeyCode() == key.VK_1) c = '1';
-        if (key.getKeyCode() == key.VK_2) c = '2';
-        if (key.getKeyCode() == key.VK_3) c = '3';
-        if (key.getKeyCode() == key.VK_4) c = '4';
-        if (key.getKeyCode() == key.VK_5) c = '5';
-        if (key.getKeyCode() == key.VK_6) c = '6';
-        if (key.getKeyCode() == key.VK_7) c = '7';
-        if (key.getKeyCode() == key.VK_8) c = '8';
-        if (key.getKeyCode() == key.VK_9) c = '9';
-        if (key.getKeyCode() == key.VK_0) c = '0';
-        if (key.getKeyCode() == key.VK_SPACE) c = ' ';
+        if (key.getKeyCode() == KeyEvent.VK_Q) c = 'q';
+        if (key.getKeyCode() == KeyEvent.VK_W) c = 'w';
+        if (key.getKeyCode() == KeyEvent.VK_E) c = 'e';
+        if (key.getKeyCode() == KeyEvent.VK_R) c = 'r';
+        if (key.getKeyCode() == KeyEvent.VK_T) c = 't';
+        if (key.getKeyCode() == KeyEvent.VK_Y) c = 'y';
+        if (key.getKeyCode() == KeyEvent.VK_U) c = 'u';
+        if (key.getKeyCode() == KeyEvent.VK_I) c = 'i';
+        if (key.getKeyCode() == KeyEvent.VK_O) c = 'o';
+        if (key.getKeyCode() == KeyEvent.VK_P) c = 'p';
+        if (key.getKeyCode() == KeyEvent.VK_A) c = 'a';
+        if (key.getKeyCode() == KeyEvent.VK_S) c = 's';
+        if (key.getKeyCode() == KeyEvent.VK_D) c = 'd';
+        if (key.getKeyCode() == KeyEvent.VK_F) c = 'f';
+        if (key.getKeyCode() == KeyEvent.VK_G) c = 'g';
+        if (key.getKeyCode() == KeyEvent.VK_H) c = 'h';
+        if (key.getKeyCode() == KeyEvent.VK_J) c = 'j';
+        if (key.getKeyCode() == KeyEvent.VK_K) c = 'k';
+        if (key.getKeyCode() == KeyEvent.VK_L) c = 'l';
+        if (key.getKeyCode() == KeyEvent.VK_Z) c = 'z';
+        if (key.getKeyCode() == KeyEvent.VK_X) c = 'x';
+        if (key.getKeyCode() == KeyEvent.VK_C) c = 'c';
+        if (key.getKeyCode() == KeyEvent.VK_V) c = 'v';
+        if (key.getKeyCode() == KeyEvent.VK_B) c = 'b';
+        if (key.getKeyCode() == KeyEvent.VK_N) c = 'n';
+        if (key.getKeyCode() == KeyEvent.VK_M) c = 'm';
+        if (key.getKeyCode() == KeyEvent.VK_1) c = '1';
+        if (key.getKeyCode() == KeyEvent.VK_2) c = '2';
+        if (key.getKeyCode() == KeyEvent.VK_3) c = '3';
+        if (key.getKeyCode() == KeyEvent.VK_4) c = '4';
+        if (key.getKeyCode() == KeyEvent.VK_5) c = '5';
+        if (key.getKeyCode() == KeyEvent.VK_6) c = '6';
+        if (key.getKeyCode() == KeyEvent.VK_7) c = '7';
+        if (key.getKeyCode() == KeyEvent.VK_8) c = '8';
+        if (key.getKeyCode() == KeyEvent.VK_9) c = '9';
+        if (key.getKeyCode() == KeyEvent.VK_0) c = '0';
+        if (key.getKeyCode() == KeyEvent.VK_SPACE) c = ' ';
         if (key.getKeyCode() == 192) c = '`';
-        if (key.getKeyCode() == key.VK_MINUS) c = '-';
-        if (key.getKeyCode() == key.VK_EQUALS) c = '=';
-        if (key.getKeyCode() == key.VK_OPEN_BRACKET) c = '[';
-        if (key.getKeyCode() == key.VK_CLOSE_BRACKET) c = ']';
-        if (key.getKeyCode() == key.VK_BACK_SLASH) c = '\\';
-        if (key.getKeyCode() == key.VK_COLON) c = ':';
-        if (key.getKeyCode() == key.VK_QUOTE) c = '\'';
-        if (key.getKeyCode() == key.VK_COMMA) c = ',';
-        if (key.getKeyCode() == key.VK_PERIOD) c = '.';
-        if (key.getKeyCode() == key.VK_SLASH) c = '/';
+        if (key.getKeyCode() == KeyEvent.VK_MINUS) c = '-';
+        if (key.getKeyCode() == KeyEvent.VK_EQUALS) c = '=';
+        if (key.getKeyCode() == KeyEvent.VK_OPEN_BRACKET) c = '[';
+        if (key.getKeyCode() == KeyEvent.VK_CLOSE_BRACKET) c = ']';
+        if (key.getKeyCode() == KeyEvent.VK_BACK_SLASH) c = '\\';
+        if (key.getKeyCode() == KeyEvent.VK_COLON) c = ':';
+        if (key.getKeyCode() == KeyEvent.VK_QUOTE) c = '\'';
+        if (key.getKeyCode() == KeyEvent.VK_COMMA) c = ',';
+        if (key.getKeyCode() == KeyEvent.VK_PERIOD) c = '.';
+        if (key.getKeyCode() == KeyEvent.VK_SLASH) c = '/';
 
         if (queue[5]) {
             if (c == 'q') c = 'Q';
@@ -6323,28 +6382,28 @@ public class TerrariaClone extends JApplet implements ChangeListener, KeyListene
             }
         }
 
-        if (key.getKeyCode() == key.VK_EQUALS && layer < 2) {
+        if (key.getKeyCode() == KeyEvent.VK_EQUALS && layer < 2) {
             layer += 1;
         }
-        if (key.getKeyCode() == key.VK_MINUS && layer > 0) {
+        if (key.getKeyCode() == KeyEvent.VK_MINUS && layer > 0) {
             layer -= 1;
         }
     }
 
     public void keyReleased(KeyEvent key) {
-        if (key.getKeyCode() == key.VK_LEFT || key.getKeyCode() == key.VK_A) {
+        if (key.getKeyCode() == KeyEvent.VK_LEFT || key.getKeyCode() == KeyEvent.VK_A) {
             queue[0] = false;
         }
-        if (key.getKeyCode() == key.VK_RIGHT || key.getKeyCode() == key.VK_D) {
+        if (key.getKeyCode() == KeyEvent.VK_RIGHT || key.getKeyCode() == KeyEvent.VK_D) {
             queue[1] = false;
         }
-        if (key.getKeyCode() == key.VK_UP || key.getKeyCode() == key.VK_W) {
+        if (key.getKeyCode() == KeyEvent.VK_UP || key.getKeyCode() == KeyEvent.VK_W) {
             queue[2] = false;
         }
-        if (key.getKeyCode() == key.VK_SHIFT) {
+        if (key.getKeyCode() == KeyEvent.VK_SHIFT) {
             queue[5] = false;
         }
-        if (key.getKeyCode() == key.VK_DOWN || key.getKeyCode() == key.VK_S) {
+        if (key.getKeyCode() == KeyEvent.VK_DOWN || key.getKeyCode() == KeyEvent.VK_S) {
             queue[6] = false;
         }
     }

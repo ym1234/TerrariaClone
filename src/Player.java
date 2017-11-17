@@ -43,8 +43,8 @@ public class Player implements Serializable {
 
         ix = (int)x;
         iy = (int)y;
-        ivx = (int)ivx;
-        ivy = (int)ivy;
+        ivx = ivx;
+        ivy = ivy;
 
         rect = new Rectangle(ix, iy, width, height);
 
